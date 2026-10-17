@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>بوصلة التفكير الواضح</title>
+<meta name="description" content="قولنا إيه اللي واقفك، وهنديك خطوة صغيرة تعملها دلوقتي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1EF;--card:#fff;--ink:#1F2A24;--soft:#4B5A52;--line:#CBD6D0;--ac:#2F6F62;--ac2:#E4EEEB;--am:#8A5A24;--am2:#F5E9DC;--rd:#A8452F;--rd2:#F5E1DB;--on:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#14181A;--card:#1B2124;--ink:#E7ECE9;--soft:#B3C0B9;--line:#2C3538;--ac:#5FAE9C;--ac2:#1E2E2A;--am:#D89A5C;--am2:#302517;--rd:#D3705A;--rd2:#301D18;--on:#10201c}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg)}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;color:var(--ink);line-height:1.7;padding:max(28px,env(safe-area-inset-top)) 18px max(60px,env(safe-area-inset-bottom));display:flex;justify-content:center}
+.pg{width:100%;max-width:640px}
+h1{font-family:'Markazi Text',serif;font-weight:700;font-size:clamp(30px,6vw,40px);line-height:1.15;margin:0 0 6px}
+h3{font-size:15px;margin:0 0 8px}
+.sub{color:var(--soft);margin:0 0 6px;font-size:15px}
+.note{font-size:13px;color:var(--soft);margin:0 0 8px}
+.step{border-top:1px solid var(--line);padding:22px 0}
+.sh{display:flex;gap:10px;align-items:baseline;margin-bottom:12px}
+.sn{font-family:'Markazi Text',serif;font-weight:600;font-size:18px;color:var(--ac)}
+.st{font-weight:600}
+textarea{width:100%;min-height:80px;font-family:inherit;font-size:15px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);resize:vertical}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.err{display:none;color:var(--rd);font-size:14px;margin:8px 0 0}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:480px){.rg{grid-template-columns:1fr}}
+.rb label{display:block;font-size:14px;color:var(--soft)}
+.rr{display:flex;gap:10px;align-items:center}
+.rr input{flex:1;accent-color:var(--ac)}
+.rv{font-family:'Markazi Text',serif;font-weight:600;font-size:19px;min-width:34px;text-align:center}
+.sg label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:15px;cursor:pointer}
+.sg input{margin-top:5px;accent-color:var(--ac)}
+.btn{font-family:inherit;font-size:14px;padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.soft{background:var(--ac2);color:var(--ac);border:0}
+.btn.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.go{width:100%;margin-top:6px;padding:14px;font-family:inherit;font-size:16px;font-weight:600;border:0;border-radius:8px;background:var(--ac);color:var(--on);cursor:pointer}
+#result{display:none;margin-top:30px}
+.mr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.m{flex:1;min-width:130px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.m small{display:block;font-size:13px;color:var(--soft)}
+.m b{font-family:'Markazi Text',serif;font-weight:600;font-size:20px}
+.sc{border-radius:8px;padding:16px 18px;margin-bottom:16px;border:1px solid}
+.sc p{margin:0}
+.sc.green{background:var(--ac2);border-color:var(--ac)}
+.sc.yellow{background:var(--am2);border-color:var(--am)}
+.sc.red{background:var(--rd2);border-color:var(--rd)}
+ul.sp{margin:0 0 16px;padding-inline-start:20px}
+ul.sp li{margin-bottom:6px}
+.ex{border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
+.ex h4{font-family:'Markazi Text',serif;font-weight:700;font-size:20px;margin:0 0 4px}
+.ph{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:14px}
+.ph b{display:flex;justify-content:space-between}
+.ph p{margin:4px 0 0;color:var(--soft)}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px;white-space:pre-wrap;margin-top:10px}
+.fq{margin:14px 0}
+.fq p{margin:0 0 6px;font-weight:600;font-size:15px}
+#result>div:last-child{margin-top:18px}
+.hist{display:none;margin-top:26px;font-size:14px}
+.hi{display:grid;grid-template-columns:auto 1fr auto;gap:10px;border-top:1px solid var(--line);padding:7px 0}
+.hi p{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+footer{margin-top:34px;font-size:13px;color:var(--soft);text-align:center}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="pg">
+<header>
+<h1>🧠 بوصلة التفكير الواضح</h1>
+<p class="sub">قولنا إيه اللي واقفك، وهنديك خطوة صغيرة تعملها دلوقتي.</p>
+<p class="note">أداة تفكير وإنتاجية بس، مش تشخيص طبي أو نفسي.</p>
+</header>
+<form id="form" novalidate>
+<section class="step"><div class="sh"><span class="sn">١</span><label class="st" for="task">إيه المهمة أو القرار اللي واقفك؟</label></div>
+<textarea id="task" placeholder="مثلًا: عايز أبدأ مشروع جانبي بس مش عارف أبدأ منين"></textarea><p class="err" id="err" role="alert"></p></section>
+<section class="step"><div class="sh"><span class="sn">٢</span><span class="st">تعبان قد إيه دلوقتي؟</span></div>
+<div class="rg">
+<div class="rb"><label for="physical">جسمك (١ مرتاح · ١٠ منهك)</label><div class="rr"><input type="range" id="physical" min="1" max="10" value="3"><span class="rv" id="pv">3</span></div></div>
+<div class="rb"><label for="mental">دماغك (١ صافية · ١٠ مرهقة)</label><div class="rr"><input type="range" id="mental" min="1" max="10" value="4"><span class="rv" id="mv">4</span></div></div>
+</div></section>
+<section class="step"><div class="sh"><span class="sn">٣</span><span class="st">إيه اللي مأخّرك؟</span></div>
+<p class="note">اختار اللي ينطبق، أو سيبها فاضية.</p>
+<div class="sg" id="sg"></div>
+<button type="button" class="btn soft" id="more">أسباب تانية ▾</button>
+<div class="sg" id="sg2" hidden></div></section>
+<button class="go" type="submit">🚀 هات الخطوة الجاية</button>
+</form>
+<section id="result" aria-live="polite"></section>
+<section class="hist" id="hist"><h3>آخر مواقف على الجهاز ده <button type="button" class="btn" id="clr">مسح</button></h3><div id="hl"></div></section>
+<footer>اللي بتكتبه مبيتبعتش لأي خادم، بيتحفظ على جهازك بس وتقدر تمسحه.</footer>
+</div>
+<script>
+(function(){'use strict';
+const KEY='ctc4',HK='ctc4h';
+const S=[
+{id:'complexity',t:'المهمة معقدة ومش عارف أقسّمها',k:'execution'},
+{id:'start',t:'مش عارف أبدأ منين',k:'execution'},
+{id:'uncertainty',t:'مش واضح إيه اللي هيحصل بعدين',k:'uncertainty'},
+{id:'fear',t:'خايف آخد قرار غلط',k:'uncertainty'},
+{id:'boredom',t:'زهقان أو مفيش حماس',k:'motivation'},
+{id:'physical',t:'جسمي تعبان',k:'energy'},
+{id:'mental',t:'دماغي مرهقة',k:'energy'},
+{id:'perfection',t:'عايزه يطلع كامل وده بيعطّلني',k:'motivation'},
+{id:'environment',t:'المكان حواليا مشتّت',k:'environment'}];
+const K={energy:'تعبان',environment:'المكان حواليك',uncertainty:'خايف من قرار غلط',execution:'مش عارف تبدأ منين',motivation:'مفيش حماس'};
+// أوزان الإشارات (أرقام مؤقتة): الطاقة والغموض أعلى شوية. لو التعادل حصل، الأول في الترتيب ده بيكسب.
+const W={energy:1.15,environment:1,uncertainty:1.05,execution:1,motivation:1};
+const C={
+crit:['تعبان أوي','طاقتك تعبانة أوي دلوقتي.',['اختار أصغر نسخة من المهمة، تتعمل في 5 دقايق.','متحاسبش نفسك أو الفكرة بجلسة واحدة.','لو محتاج راحة، ارتاح الأول.']],
+energy:['تعبان','حاسس بتعب واضح، خده بجد.',['صغّر الجلسة لنصها.','خد 5-10 دقايق راحة الأول.','قيّم طاقتك تاني بعد الراحة.']],
+environment:[K.environment,'المكان حواليك مشتت.',['اقفل مصدر تشتيت واحد دلوقتي.','جهّز بس الأدوات اللي محتاجها.','ابدأ بمؤقت 15 دقيقة.']],
+uncertainty:[K.uncertainty,'خايف تاخد قرار غلط، وده بيوقفك.',['متسألش «إيه القرار الصح؟»، اسأل «إيه الدليل اللي ناقصني؟».','حدد معيار واحد تقيس بيه.','حط ميعاد قصير تراجع فيه، متسيبهوش مفتوح.']],
+execution:[K.execution,'المهمة كبيرة وملهاش بداية واضحة.',['اكتب إيه اللي المفروض يبان بعد 20 دقيقة.','ابدأ بفعل واضح: اكتب، اتصل، افتح.','نفّذ أول خطوة بس، بلاش تخطيط زيادة.']],
+motivation:[K.motivation,'مفيش حماس يخليك تبدأ.',['اعمل نسخة وحشة عمدًا، من غير ضغط جودة.','اربطها بمكافأة أو ميعاد قصير.','قيّم بعد 15 دقيقة، مش قبل ما تبدأ.']],
+none:['مش واضح لسه','مش واضح لسه إيه اللي واقفك بالظبط.',['اكتب إيه اللي هيتغيّر بعد 20 دقيقة.','اختار فعل واحد ملموس.','جرّب حاجة صغيرة، وبعدين قيّم تاني.']]};
+
+const $=i=>document.getElementById(i);
+const rd=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}};
+const wr=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+// كل النصوص بتتحط بـ textContent، فكلام المستخدم عمره ما بيتفسّر كـ HTML
+function h(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+
+const task=$('task'),ph=$('physical'),me=$('mental');
+const sel=()=>[...document.querySelectorAll('input[data-id]:checked')].map(i=>i.dataset.id);
+const save=()=>wr(KEY,{task:task.value,p:ph.value,m:me.value,s:sel()});
+const vals=()=>{$('pv').textContent=ph.value;$('mv').textContent=me.value};
+function addS(box,s){const l=h('label'),i=document.createElement('input');i.type='checkbox';i.dataset.id=s.id;i.addEventListener('change',save);l.append(i,s.t);box.append(l)}
+S.forEach((s,n)=>addS($(n<5?'sg':'sg2'),s));
+const st=rd(KEY)||{};
+if(typeof st.task==='string')task.value=st.task;
+if(st.p)ph.value=st.p;
+if(st.m)me.value=st.m;
+(Array.isArray(st.s)?st.s:[]).forEach(id=>{const i=document.querySelector('input[data-id="'+id+'"]');if(i)i.checked=true});
+vals();
+[task,ph,me].forEach(e=>e.addEventListener('input',()=>{vals();save()}));
+$('more').addEventListener('click',()=>{const g=$('sg2');g.hidden=!g.hidden;$('more').textContent=g.hidden?'أسباب تانية ▾':'أقل ▴'});
+
+// نسخ صادق: بيرجّع true بس لو النسخ نجح فعلًا
+async function copyTxt(t){
+try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(t);return true}}catch(e){}
+try{const a=h('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.append(a);a.select();const ok=document.execCommand('copy');a.remove();return ok===true}catch(e){return false}}
+// لو النسخ فشل: نعرض النص قدام المستخدم ونحدده عشان ينسخه بإيده
+function showSel(box,t){box.textContent=t;box.hidden=false;const r=document.createRange();r.selectNodeContents(box);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+
+function fat(t){return t>=15?['تعبان أوي','red','ارتاح الأول، ومتاخدش قرار كبير دلوقتي.']:t>=10?['تعبان شوية','yellow','خليها جلسة قصيرة على حاجة واحدة بس.']:['طاقة جيدة','green','عندك مجال تركّز شوية.']}
+function analyze(){
+const sc={energy:0,environment:0,uncertainty:0,execution:0,motivation:0};
+sel().forEach(id=>{const s=S.find(x=>x.id===id);if(s)sc[s.k]+=W[s.k]});
+const tot=+ph.value+ +me.value,ks=Object.keys(sc).filter(k=>sc[k]>0);
+const key=tot>=15?'crit':ks.length?ks.reduce((a,b)=>sc[b]>sc[a]?b:a):'none';
+const win=key==='crit'?'energy':key==='none'?null:key;
+const c=C[key],steps=c[2].slice();
+if(tot>=10&&tot<15)steps.unshift('صغّر الجلسة لـ15-20 دقيقة بسبب طاقتك دلوقتي.');
+const others=ks.filter(k=>k!==win).map(k=>K[k]);
+return{tot,f:fat(tot),barrier:c[0],summary:c[1],steps,
+note:others.length?'فيه كمان: '+others.join('، ')+'. هنرجعلها بعدين لو لسه موجودة.':'',
+exp:sc.uncertainty>0&&tot<15,complex:sc.execution>0}}
+
+function render(d,t){
+const r=$('result');r.textContent='';
+const mr=h('div','mr');
+[['الإرهاق الكلي',d.tot+'/20'],['حالة الطاقة',d.f[0]],['السبب الرئيسي',d.barrier]].forEach(p=>{const m=h('div','m');m.append(h('small',0,p[0]),h('b',0,p[1]));mr.append(m)});
+const sc=h('div','sc '+d.f[1]);sc.append(h('p',0,d.summary+' '+d.f[2]+' أول خطوة: '+d.steps[0]));
+r.append(mr,sc,h('h3',0,'🎯 خطوات العمل'));
+const ul=h('ul','sp');d.steps.forEach(s=>ul.append(h('li',0,s)));r.append(ul);
+if(d.note)r.append(h('p','note',d.note));
+if(d.exp){
+const ex=h('div','ex');
+ex.append(h('h4',0,'🧪 جرّب بدل ما تفكر'),h('p','note','بلاش تحسم «'+t.slice(0,60)+'» في دماغك. جرّب حاجة صغيرة الأول.'));
+[['١. حدد سؤالك','5 دقايق','اكتب سؤالك بالظبط، واختار مصدر واحد يجاوبك عليه.'],
+['٢. جرّب','30 دقيقة',d.complex?'اعمل نسخة صغيرة من المهمة في 30 دقيقة، بس عشان تجرب.':'جرّب حاجة حقيقية 30 دقيقة، وسجّل حسيت إيه بعدها.'],
+['٣. راجع','5 دقايق','اكتب اتعلمت إيه، وقرر تكمل ولا لأ.']].forEach(p=>{const e=h('div','ph'),b=h('b');b.append(h('span',0,p[0]),h('span',0,p[1]));e.append(b,h('p',0,p[2]));ex.append(e)});
+r.append(ex)}
+const act=h('div','opts'),cp=h('button','btn','نسخ ملخص الجلسة'),rs=h('button','btn','موقف تاني'),box=h('div','box'),fb=h('div'),fbb=h('button','btn soft','عندك دقيقة؟ قولنا رأيك ▾');
+cp.type=rs.type=fbb.type='button';box.hidden=true;
+cp.onclick=async()=>{const txt='بوصلة التفكير الواضح\nالسبب الرئيسي: '+d.barrier+'\nالإرهاق: '+d.tot+'/20\nأول خطوة: '+d.steps[0];
+if(await copyTxt(txt)){cp.textContent='اتنسخ ✓';box.hidden=true}else{showSel(box,txt);cp.textContent='انسخه من هنا'}};
+rs.onclick=()=>{task.value='';ph.value=3;me.value=4;document.querySelectorAll('input[data-id]').forEach(i=>{i.checked=false});vals();save();r.style.display='none';r.textContent='';$('form').scrollIntoView()};
+fbb.onclick=()=>{fbb.remove();feedback(fb,t,d.barrier)};
+act.append(cp,rs);fb.append(fbb);r.append(act,box,fb);
+r.style.display='block';r.scrollIntoView()}
+
+function feedback(c,t,b){
+const ans={};
+[['q1','فهمت السبب اللي حدّدته الأداة؟',['آه','نوعًا ما','لأ']],
+['q2','الخطوة كانت صغيرة كفاية تنفّذها دلوقتي؟',['آه','محتاجة تبسيط','لأ']],
+['q3','عملت أو هتعمل الخطوة؟',['عملتها','هعملها','لأ']]].forEach(q=>{
+const w=h('div','fq'),ob=h('div','opts');w.append(h('p',0,q[1]),ob);
+q[2].forEach(v=>{const bt=h('button','btn',v);bt.type='button';bt.onclick=()=>{ob.querySelectorAll('.btn').forEach(x=>x.classList.remove('on'));bt.classList.add('on');ans[q[0]]=v};ob.append(bt)});
+c.append(w)});
+const n=h('textarea');n.placeholder='أي ملاحظة؟ (اختياري)';n.setAttribute('aria-label','ملاحظة');
+const go=h('button','btn soft','جهّز ردي'),stt=h('p','note'),box=h('div','box');go.type='button';box.hidden=true;
+go.onclick=async()=>{
+const txt='رأيي في بوصلة التفكير الواضح\nالمهمة: '+t.slice(0,200)+'\nالسبب: '+b+'\nفهمت السبب: '+(ans.q1||'—')+'\nالخطوة صغيرة: '+(ans.q2||'—')+'\nنفّذت الخطوة: '+(ans.q3||'—')+(n.value.trim()?'\nملاحظة: '+n.value.trim():'');
+if(await copyTxt(txt)){box.textContent=txt;box.hidden=false;stt.textContent='اتنسخ ✓ — ابعته لمجدي بأي طريقة (واتساب مثلًا).'}
+else{showSel(box,txt);stt.textContent='ما قدرناش ننسخ تلقائيًا. الرد متحدد قدامك — انسخه بإيدك وابعته لمجدي.'}};
+c.append(n,go,stt,box)}
+
+const hist=()=>{const v=rd(HK);return Array.isArray(v)?v:[]};
+function drawH(){const l=hist(),c=$('hl');$('hist').style.display=l.length?'block':'none';c.textContent='';
+l.forEach(x=>{const row=h('div','hi');row.append(h('span','note',x.time),h('p',0,x.task),h('b',0,x.barrier));c.append(row)})}
+$('clr').onclick=()=>{wr(HK,[]);drawH()};
+drawH();
+
+$('form').addEventListener('submit',e=>{
+e.preventDefault();const t=task.value.trim(),er=$('err');
+if(t.length<8||!/[A-Za-z\u0600-\u06FF]/.test(t)){er.textContent='اكتب وصف حقيقي للموقف، ٨ حروف على الأقل.';er.style.display='block';task.focus();return}
+er.style.display='none';const d=analyze();render(d,t);
+wr(HK,[{task:t.slice(0,100),barrier:d.barrier,time:new Date().toLocaleDateString('ar-EG')},...hist()].slice(0,5));drawH()});
+})();
+</script>
+</body>
+</html>
